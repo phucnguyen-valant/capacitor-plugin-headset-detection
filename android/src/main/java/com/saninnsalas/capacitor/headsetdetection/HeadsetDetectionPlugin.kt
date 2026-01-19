@@ -53,6 +53,7 @@ public class HeadsetDetectionPlugin : Plugin() {
         override fun onAudioDevicesAdded(addedDevices: Array<out AudioDeviceInfo>?) {
             if(addedDevices == null) return
             val headphones = addedDevices.filter { isHeadphoneDevice(it) }
+            if(headphones.isEmpty()) return
             headphones.forEach {
                 Log.d(TAG, "Headphones addedDevices ${it.productName}, type: ${it.type}")
                 connectedHeadset = HeadsetDevice(it.id, it.type, it.productName.toString())
@@ -63,6 +64,7 @@ public class HeadsetDetectionPlugin : Plugin() {
         override fun onAudioDevicesRemoved(removedDevices: Array<out AudioDeviceInfo>?) {
             if(removedDevices == null) return
             val headphones = removedDevices.filter { isHeadphoneDevice(it) }
+            if(headphones.isEmpty()) return
             headphones.forEach {
                 Log.d(TAG, "Headphones removedDevices ${it.productName}, type: ${it.type}")
                 connectedHeadset = null
