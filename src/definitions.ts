@@ -30,6 +30,6 @@ export interface HeadsetDetectionPlugin {
    */
   addListener(
     eventName: HeadphoneDetectionEventNames.ConnectedHeadphones,
-    listenerFunc: (info: HeadsetDetectionEvent) => void
-  ): PluginListenerHandle;
+    listenerFunc: (info: HeadsetDetectionEvent) => void,
+  ): Promise<PluginListenerHandle>;
 }

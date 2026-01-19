@@ -7,9 +7,9 @@
   "types": "dist/esm/index.d.ts",
   "scripts": {
     "lint": "npm run prettier -- --check && npm run swiftlint -- lint",
-    "prettier": "prettier \"**/*.{css,html,ts,js,java,kotlin}\"",
+    "prettier": "prettier --plugin=prettier-plugin-java \"**/*.{css,html,ts,js,java,kotlin}\"",
     "swiftlint": "node-swiftlint",
-    "build": "npm run clean && tsc && rollup -c rollup.config.js",
+    "build": "npm run clean && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
@@ -18,26 +18,26 @@
   "author": "Saninn Salas Diaz (www.saninnsalas.com)",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor/android": "^5.0.0",
-    "@capacitor/core": "^5.0.0",
-    "@capacitor/ios": "^5.0.0",
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
-    "@ionic/prettier-config": "^2.1.2",
-    "@ionic/swiftlint-config": "^1.1.2",
+    "@ionic/prettier-config": "^4.0.0",
+    "@ionic/swiftlint-config": "^2.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
-    "prettier": "^2.3.0",
-    "prettier-plugin-java": "^1.0.2",
+    "prettier": "^3.4.2",
+    "prettier-plugin-java": "^2.6.6",
     "prettier-plugin-kotlin": "^2.1.0",
-    "rimraf": "^5.0.0",
-    "rollup": "^2.47.0",
-    "swiftlint": "^1.0.1",
-    "typescript": "~4.5.4"
+    "rimraf": "^6.0.1",
+    "rollup": "^4.30.1",
+    "swiftlint": "^2.0.0",
+    "typescript": "~5.0.2"
   },
   "peerDependencies": {
-    "@capacitor/core": "^5.0.0"
+    "@capacitor/core": ">=7.0.0"
   },
   "files": [
     "dist/",

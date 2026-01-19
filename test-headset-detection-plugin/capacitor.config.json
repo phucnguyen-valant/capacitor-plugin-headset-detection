@@ -1,13 +1,11 @@
 {
   "appId": "com.saninnsalas.capacitor.plugin.headsetdetection.tester",
   "appName": "Headset Detection Plugin Tester",
-  "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
     }
-  },
-  "cordova": {}
+  }
 }

@@ -48,10 +48,7 @@ const DEVICE_TEST_OBJECTS: { [key: string]: HeadsetDetectionEvent } = {
 };
 export class HeadsetDetectionWeb extends WebPlugin implements HeadsetDetectionPlugin {
   constructor() {
-    super({
-      name: 'HeadsetDetection',
-      platforms: ['web'],
-    });
+    super();
 
     this.registerDebugFunctions();
   }
