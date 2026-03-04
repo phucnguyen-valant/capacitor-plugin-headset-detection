@@ -16,6 +16,7 @@ public class HeadsetDetectionPlugin : Plugin() {
     private val TAG = "HeadsetDetectionPlugin"
 
     private var started = false
+    private var initialCallbackProcessed = false
 
     private val headphoneDeviceTypes = listOf(
             AudioDeviceInfo.TYPE_BLUETOOTH_A2DP,
@@ -51,6 +52,17 @@ public class HeadsetDetectionPlugin : Plugin() {
 
     private val deviceCallBack: AudioDeviceCallback =  object: AudioDeviceCallback() {
         override fun onAudioDevicesAdded(addedDevices: Array<out AudioDeviceInfo>?) {
+            if(!initialCallbackProcessed) {
+                initialCallbackProcessed = true
+                val audioManager = context.getSystemService(AudioManager::class.java)
+                val currentHeadphone = audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
+                    .filter { isHeadphoneDevice(it) }
+                    .firstOrNull()
+                connectedHeadset = currentHeadphone?.let {
+                    HeadsetDevice(it.id, it.type, it.productName.toString())
+                }
+                return
+            }
             if(addedDevices == null) return
             val headphones = addedDevices.filter { isHeadphoneDevice(it) }
             if(headphones.isEmpty()) return
